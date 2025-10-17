@@ -1,5 +1,5 @@
 <template>
-  <div class="page about">
+  <div class="page louie">
     <HeaderHero
       :heroImage="louieSquatHero"
       title="Louie Simmons"
