@@ -28,34 +28,31 @@ function createEmbeddablePlugin(): Plugin {
           const filePath = path.join(outputDir, fileName)
           let content = fs.readFileSync(filePath, 'utf-8')
 
-          // Extract just the body content and inline scripts/styles
-          const bodyMatch = content.match(/<body[^>]*>([\s\S]*?)<\/body>/i)
+          // For embed, extract styles and scripts from head, and all body content
+
+          // Extract all <style> tags
+          const headStyleMatches = [...content.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)]
+          const headStyles = headStyleMatches.map(m => `<style>${m[1]}</style>`).join('\n')
+
+          // Extract all inline <script> tags (ones without src attribute)
+          const scriptMatches = [...content.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/gi)]
+          const inlineScripts = scriptMatches
+            .filter(m => !m[1].includes('src='))
+            .map(m => `<script${m[1]}>${m[2]}</script>`)
+            .join('\n')
+
+          // Extract everything between <body> and </body>
+          const bodyMatch = content.match(/<body[^>]*>([\s\S]*)<\/body>/i)
+
           if (bodyMatch) {
-            let embeddableContent = bodyMatch[1]
+            const bodyContent = bodyMatch[1]
 
-            // Extract inline styles
-            const styleMatches = content.matchAll(/<style[^>]*>([\s\S]*?)<\/style>/gi)
-            let styles = ''
-            for (const match of styleMatches) {
-              styles += match[1]
-            }
-
-            // Extract inline scripts
-            const scriptMatches = content.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/gi)
-            let scripts = ''
-            for (const match of scriptMatches) {
-              // Only include scripts without src attribute (inline scripts)
-              if (!match[0].includes('src=')) {
-                scripts += match[1]
-              }
-            }
-
-            // Create embeddable version with wrapper div
+            // Create embeddable version - styles first, then body, then scripts
             const embeddable = `<div id="wsbb-embed-root">
-              ${embeddableContent}
-              ${styles ? `<style>${styles}</style>` : ''}
-              ${scripts ? `<script>${scripts}</script>` : ''}
-            </div>`
+${headStyles}
+${bodyContent}
+${inlineScripts}
+</div>`
 
             // Write the embeddable version
             const embedFileName = fileName.replace('.html', '.embed.html')
