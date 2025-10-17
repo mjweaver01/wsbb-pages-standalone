@@ -70,7 +70,8 @@ function createEmbeddablePlugin(): Plugin {
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/',
+  // Set base URL to absolute path for embedded pages
+  base: embedMode ? `${baseUrl}/` : '/',
   plugins: [
     vue(),
     viteSingleFile({
