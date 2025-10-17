@@ -52,10 +52,10 @@ function createEmbeddablePlugin(): Plugin {
 
             // Create embeddable version with wrapper div
             const embeddable = `<div id="wsbb-embed-root">
-  ${embeddableContent}
-  ${styles ? `<style>${styles}</style>` : ''}
-  ${scripts ? `<script>${scripts}</script>` : ''}
-</div>`
+              ${embeddableContent}
+              ${styles ? `<style>${styles}</style>` : ''}
+              ${scripts ? `<script>${scripts}</script>` : ''}
+            </div>`
 
             // Write the embeddable version
             const embedFileName = fileName.replace('.html', '.embed.html')
