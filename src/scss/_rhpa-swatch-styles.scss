@@ -1,0 +1,192 @@
+@use './variables.scss' as *;
+
+// shared styles with PDP and inline RHPA
+.product,
+.inline-rhpa {
+  .options-wrapper {
+    .swatches-wrapper {
+      .swatch-title {
+        margin-bottom: 0;
+
+        &,
+        span {
+          color: $gray;
+        }
+      }
+
+      .swatches {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -0.5em 1.25em;
+
+        .swatch {
+          position: relative;
+          margin: 0.5em 0 0 0.5em;
+          cursor: pointer;
+          color: $black;
+          overflow: hidden;
+          z-index: 1;
+          // https://stackoverflow.com/questions/24077725/mobile-safari-sometimes-does-not-trigger-the-click-event
+          -webkit-tap-highlight-color: transparent;
+
+          input {
+            display: none;
+          }
+
+          label {
+            padding: 0.5em 0.75em;
+            border: 2px solid $light-gray;
+            color: $black;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+          }
+
+          &:not(.color-swatch) {
+            label {
+              color: $black !important; //override weird "blue" scenario
+            }
+
+            input:disabled + label,
+            input.disabled + label {
+              background: $light-gray;
+              color: $dark-gray;
+              border-color: $medium-gray;
+            }
+
+            input:checked + label {
+              color: $black;
+            }
+          }
+
+          input:checked + label {
+            border-color: $black !important;
+            color: $black;
+
+            &:after {
+              background: $black !important;
+            }
+          }
+
+          &.oos {
+            border-radius: 5px;
+
+            label {
+              &:after {
+                content: '';
+                top: 50%;
+                left: 50%;
+                width: 50%;
+                height: 2px;
+                transform: translate(-50%, -50%);
+                background: $black;
+                z-index: 1;
+                position: absolute;
+              }
+            }
+          }
+
+          &.color-swatch {
+            position: relative;
+
+            label {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              padding: 0;
+              margin: 0 !important;
+              color: transparent !important;
+              border-radius: 50%;
+              border-color: $white;
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              position: relative;
+              overflow: hidden;
+            }
+
+            &[class*='white'] {
+              label {
+                border-color: $light-gray;
+              }
+            }
+
+            &.oos {
+              label {
+                border-color: $gray;
+
+                &:after {
+                  content: '';
+                  top: 50%;
+                  left: 50%;
+                  width: 150%;
+                  height: 2px;
+                  background: $gray;
+                  transform: translate(-50%, -50%) rotate(-45deg);
+                  z-index: 1;
+                  position: absolute;
+                }
+              }
+            }
+          }
+
+          @media (hover) {
+            &:hover label {
+              border-color: $gray;
+            }
+          }
+        }
+      }
+
+      .select-wrapper,
+      .radio-wrapper {
+        margin: 0 0 1em;
+      }
+
+      .select-title,
+      .radio-title {
+        margin-bottom: 0.5em;
+      }
+
+      .radio-wrapper {
+        border: 1px solid $medium-gray;
+        margin-bottom: 1em;
+        padding: 0.75em 0.75em 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        .radio {
+          flex-basis: 100%;
+
+          &.half-width {
+            flex-basis: 50%;
+          }
+        }
+      }
+    }
+
+    .quantity-atc-wrapper {
+      display: flex;
+      margin-bottom: 1.25em;
+
+      .quantity-input-wrapper {
+        width: 100px;
+        margin-right: 1em;
+      }
+
+      .add-to-cart-wrapper {
+        &,
+        button {
+          width: 100%;
+        }
+
+        button {
+          min-width: 0;
+          padding: 0.85em 0;
+        }
+      }
+    }
+  }
+}

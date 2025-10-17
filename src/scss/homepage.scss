@@ -1,0 +1,47 @@
+//------------------
+// SCSS VARS
+//------------------
+@use './variables.scss' as *;
+
+//------------------
+// HOMEPAGE
+//------------------
+
+// Custom homepage & about page styles in global.scss
+.m-hrf-abs {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.shopify-section .jdgm-carousel-wrapper {
+  .jdgm-carousel {
+    position: relative;
+    @media (max-width: $desktop) {
+      padding: 0 40px;
+    }
+  }
+
+  .jdgm-carousel__arrows {
+    width: 107%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: absolute;
+    left: -3.5%;
+    top: 90px;
+    @media (max-width: $desktop) {
+      width: 90%;
+      left: 5%;
+    }
+  }
+}
+
+.left-text,
+.center-text,
+.right-text {
+  position: relative;
+  z-index: 2;
+}

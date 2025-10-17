@@ -1,0 +1,46 @@
+/* FONTS */
+@font-face {
+  font-family: "Knockout Ult Sumo";
+  src: url("@/assets/fonts/Knockout-94.otf") format("opentype");
+  font-display: swap;
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Knockout Sumo";
+  src: url("@/assets/fonts/Knockout-74.otf") format("opentype");
+  font-display: swap;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Knockout Cruiser";
+  src: url("@/assets/fonts/Knockout-32.otf") format("opentype");
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Knockout Junior";
+  src: url("@/assets/fonts/Knockout-29.otf") format("opentype");
+  font-display: swap;
+  font-weight: 300;
+}
+
+/* font-family: Knockout HTF51 Middle,Helvetica,sans-serif; */
+@font-face {
+  font-family: "Knockout HTF51 Middle";
+  src: url("@/assets/fonts/Knockout-HTF51-Middleweight-Regular.otf")
+    format("opentype");
+  font-display: swap;
+  font-weight: 500;
+}
+
+/* font-family: Knockout HTF31 JuniorMiddle,Helvetica,sans-serif; */
+@font-face {
+  font-family: "Knockout HTF31 JuniorMiddle";
+  src: url("@/assets/fonts/Knockout-HTF31-JuniorMiddlewt-Regular.otf")
+    format("opentype");
+  font-display: swap;
+  font-weight: 500;
+}

@@ -1,0 +1,758 @@
+//------------------
+// SCSS VARS
+//------------------
+@use './variables.scss' as *;
+@use './newsletter-pages.scss';
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+//------------------
+// CMS PAGE
+//------------------
+.page {
+  min-height: 500px;
+
+  .constrain-items {
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  //style guide
+  &.style-guide,
+  &.cms-page {
+    section {
+      padding: 2em 1em;
+
+      &.invert .max-width {
+        padding: 0;
+      }
+
+      &.grid .max-width {
+        padding: 0;
+      }
+
+      @media (min-width: $desktop) {
+        padding: 4em 1em;
+      }
+
+      .section-heading {
+        margin-bottom: 2em;
+        font-size: 2em;
+      }
+
+      //mobile column-6 full width
+      @media (max-width: calc($tablet - 1px)) {
+        &:not(.grid) {
+          [class*='column'] {
+            flex-basis: 100% !important;
+            max-width: 100% !important;
+            margin-top: 2em;
+          }
+        }
+      }
+    }
+  }
+
+  // 404
+  &.four-oh-four {
+    display: flex;
+    justify-content: center;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    background: $overlay;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+
+    @media (min-width: $tablet) {
+      min-height: 75vh;
+    }
+
+    .four-oh-four-inner {
+      width: 100%;
+      max-width: 650px;
+      margin: 1em;
+      background: $white;
+      padding: 2em;
+      align-self: center;
+
+      @media (min-width: $tablet) {
+        padding: 4em;
+      }
+
+      p {
+        margin-bottom: 2rem;
+      }
+
+      .links-wrapper {
+        display: flex;
+        flex-flow: column;
+
+        .button:not(:last-of-type) {
+          margin-bottom: 1em;
+        }
+
+        @media (min-width: $mobile) {
+          flex-flow: row;
+          justify-content: space-around;
+
+          .button {
+            width: calc(50% - 2em);
+
+            &:not(:last-of-type) {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // staff page
+  &.staff {
+    .person:not(:first-of-type) {
+      @media (min-width: $tablet) {
+        margin-top: 3em;
+      }
+    }
+
+    .person-image {
+      margin-bottom: -1.5em;
+    }
+
+    @media (min-width: $tablet) {
+      .person:nth-of-type(odd) {
+        .person-description {
+          padding-left: 2em;
+        }
+      }
+
+      .person:nth-of-type(even) {
+        .person-description {
+          padding-right: 2em;
+        }
+      }
+    }
+  }
+
+  // about page
+  &.about {
+    .record-board-wrapper,
+    .defined-by,
+    .story-of,
+    .westside-header {
+      position: relative;
+    }
+
+    .story-of,
+    .westside-header,
+    .story-info {
+      border: 5px solid $white;
+      border-bottom: 0;
+
+      h1,
+      h2 {
+        margin-bottom: 0;
+      }
+
+      img {
+        padding: 1em;
+      }
+    }
+
+    .record-board-wrapper {
+      margin-bottom: -5px;
+      max-height: 500px;
+      max-height: 80vh;
+      overflow: hidden;
+
+      .hero {
+        max-width: 500px;
+      }
+    }
+
+    .record-board-description,
+    .westside-header-text,
+    .story-of-text,
+    .defined-by-text {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      justify-content: center;
+      margin: 0 auto;
+      transform: translateX(-50%);
+
+      > * {
+        color: $white;
+      }
+    }
+
+    // specific to this text,
+    // will need to update if this markup changes
+    .defined-by-text-wrapper h4 {
+      background: $black;
+      display: inline-block;
+      padding: 0.25em 0.5em;
+      color: $primary-color;
+    }
+
+    .westside-header,
+    .story-of,
+    .record-board-wrapper {
+      @media (max-width: calc($tablet - 1px)) {
+        div {
+          position: relative;
+          padding: 1em;
+
+          &.westside-header-text {
+            padding: 2em 1em;
+          }
+
+          &.record-board-description {
+            padding: 3em 1em;
+          }
+        }
+
+        img {
+          position: absolute;
+        }
+      }
+    }
+
+    .story-of-text,
+    .westside-header-text {
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center;
+    }
+
+    // design specific ugh
+    .westside-header-text h1 {
+      line-height: 0.9;
+
+      @media (max-width: calc($max-width - 1px)) {
+        font-size: 3em;
+      }
+
+      @media (max-width: calc($desktop - 1px)) {
+        font-size: 2.5em;
+      }
+
+      @media (max-width: calc($mobile - 1px)) {
+        font-size: 2em;
+      }
+    }
+
+    .defined-by {
+      padding: 0 !important;
+
+      img {
+        position: absolute;
+      }
+
+      .block {
+        position: relative;
+        padding: 3em 0.5em 0;
+
+        &:last-of-type {
+          padding-bottom: 3em;
+        }
+
+        @media (min-width: $tablet) {
+          padding: 6em 0.5em 0;
+
+          &:last-of-type {
+            padding-bottom: 6em;
+          }
+        }
+
+        @media (max-width: calc($tablet - 1px)) {
+          div[class*='column'] {
+            padding-bottom: 0;
+            margin: 0;
+            max-width: 500px;
+          }
+
+          &.row-right div[class*='column'] {
+            width: auto;
+            flex-grow: 0;
+            margin-right: 0;
+            margin-left: auto;
+            flex-basis: 0;
+          }
+        }
+      }
+
+      @media (min-width: $tablet) {
+        .tablet-width {
+          min-width: $tablet;
+        }
+      }
+
+      *:not(a) {
+        color: $light-neutral;
+      }
+
+      @media (max-width: 400px) {
+        .hero {
+          font-size: 1.65em;
+        }
+      }
+    }
+
+    .story-inner {
+      padding: 1em;
+
+      @media (min-width: $tablet) {
+        padding: 1em;
+      }
+    }
+
+    .story-info {
+      padding: 1em 1em 0;
+      border-bottom: 5px solid $white;
+
+      .info-left {
+        margin-top: 3em;
+      }
+
+      @media (min-width: $tablet) {
+        .info-right {
+          margin-top: 1em;
+          margin-right: 1em;
+        }
+
+        .info-left {
+          margin-top: 1em;
+          margin-left: 1em;
+        }
+
+        .person-description {
+          padding: 2em 0px;
+        }
+      }
+
+      img {
+        padding: 0;
+      }
+
+      .secondary-featured {
+        text-transform: uppercase;
+
+        &:not(:hover) {
+          color: $black;
+        }
+      }
+    }
+  }
+
+  // Split page
+  // From DSS - Probably will not be used much here
+  .split-page {
+    div[class*='column'] {
+      padding-bottom: 0;
+    }
+
+    .tablet-vert-page-header {
+      display: none;
+    }
+
+    .page-image {
+      margin-top: 0 !important;
+    }
+
+    @media (min-width: $tablet) {
+      .page-image {
+        padding-right: 1em;
+      }
+
+      .page-content {
+        padding-left: 1em;
+      }
+
+      .mobile-page-header {
+        display: none;
+      }
+
+      .tablet-vert-page-header {
+        display: block;
+        margin-bottom: 2rem;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      .page-image {
+        padding-right: 2em;
+      }
+
+      .page-content {
+        padding-left: 2em;
+      }
+    }
+  }
+
+  &.gift-guide {
+    .page-description p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .category-title p {
+      margin-top: 1.25em;
+    }
+
+    .category-hero-image.category-title p {
+      color: #fff;
+    }
+
+    .product-list-wrapper {
+      margin-bottom: 0;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1.25em;
+
+      @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      @media (min-width: 1024px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+
+      .product {
+        .product-image-wrapper {
+          margin-bottom: 0.75em;
+          overflow: hidden;
+        }
+
+        .jdgm-prev-badge__text {
+          display: none;
+        }
+      }
+    }
+
+    .product-callout-section {
+      .row {
+        padding: 0;
+
+        @media (max-width: calc($tablet - 1px)) {
+          &,
+          .image-row {
+            padding: 0;
+            margin: 0;
+          }
+
+          &.right-image {
+            flex-flow: column-reverse;
+          }
+
+          .button {
+            width: 100%;
+          }
+        }
+
+        > div {
+          padding-bottom: 0;
+        }
+
+        .product-info {
+          padding: 0;
+
+          @media (min-width: $tablet) {
+            padding: 0 4em;
+          }
+
+          @media (min-width: $desktop) {
+            padding: 0 6em;
+          }
+
+          .title,
+          .title * {
+            color: $black;
+          }
+
+          .price,
+          .original-price {
+            display: inline-block;
+            font-family: $font-family;
+          }
+
+          .price {
+            margin-bottom: 0;
+            color: $gray;
+          }
+
+          .original-price {
+            color: $dark-gray;
+            position: relative;
+            margin-right: 0.25em;
+
+            &:after {
+              position: absolute;
+              content: '';
+              left: 0;
+              top: 50%;
+              right: 0;
+              border-top: 1px solid;
+              border-color: inherit;
+            }
+          }
+
+          .original-price + .price {
+            color: $red;
+          }
+        }
+
+        .image-wrapper {
+          width: 100%;
+
+          img {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  // bundle (books)
+  &.bundle {
+    .bundle-wrapper {
+      margin-top: 2em;
+
+      @media (min-width: $tablet) {
+        margin-top: 3em;
+      }
+    }
+
+    .collection-title {
+      margin-bottom: 0;
+    }
+
+    .product {
+      margin-bottom: 2em;
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+
+      .image-wrap {
+        margin-bottom: 0.75em;
+
+        img {
+          display: block;
+        }
+      }
+
+      .add-to-cart {
+        margin-top: 0.5em;
+      }
+
+      .field-message {
+        position: relative;
+      }
+
+      .jdgm-prev-badge__text {
+        display: none;
+      }
+    }
+  }
+
+  .bundle-modal {
+    position: fixed;
+    z-index: 99;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    background: $light-neutral;
+    border-top: 1px solid $black;
+    border-left: 1px solid $black;
+    border-right: 1px solid $black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 0.65em;
+    min-width: 300px;
+    max-width: 700px;
+    animation: slideUp 0.25s;
+    animation-delay: 0.25s;
+    animation-fill-mode: forwards;
+
+    @media (min-width: $mobile) {
+      min-width: 350px;
+      padding: 0.65em 1em;
+    }
+
+    &.has-button {
+      display: grid;
+      grid-gap: 1rem;
+      grid-template-columns: auto auto;
+      align-items: center;
+      width: calc(100% - 2em);
+
+      @media (min-width: $mobile) {
+        grid-gap: 2rem;
+      }
+    }
+
+    .bundle-text {
+      margin: 0;
+      text-transform: capitalize;
+
+      &.no-button {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: auto auto;
+        align-items: flex-end;
+
+        .discount-text {
+          white-space: nowrap;
+        }
+      }
+
+      div,
+      span {
+        font-family: inherit;
+      }
+
+      a {
+        display: block;
+        color: $black;
+        text-decoration: underline;
+        white-space: nowrap;
+        margin-top: 0.25em;
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 0.65em;
+    }
+
+    @media (min-width: $mobile) {
+      width: auto !important;
+
+      .bundle-text,
+      button {
+        white-space: nowrap;
+      }
+
+      a {
+        display: inline-block;
+      }
+    }
+  }
+
+  // bio pages
+  &.biography {
+    .category-hero-image {
+      text-align: left;
+      margin-bottom: 2em;
+
+      @media (min-width: $tablet) {
+        margin-bottom: 4em;
+      }
+
+      h1 {
+        text-transform: uppercase;
+      }
+    }
+
+    .author-info-inner {
+      display: grid;
+      grid-gap: 1em;
+
+      > div {
+        padding: 0;
+        max-width: 100%;
+        width: 100%;
+
+        h1 {
+          color: $blue-core;
+        }
+      }
+
+      @media (min-width: $tablet) {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 2em;
+        align-items: center;
+      }
+    }
+
+    @media (min-width: $tablet) {
+      .featured-articles {
+        margin-top: 1em;
+      }
+    }
+
+    .recent-articles {
+      padding-top: 0;
+    }
+
+    .product {
+      padding-bottom: 0 !important;
+
+      @media (min-width: $tablet) {
+        margin-bottom: 1em !important;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .post-text {
+        background: $light-neutral;
+        padding: 0.5em;
+
+        .post-title {
+          font-size: 1.5em;
+          color: $black;
+        }
+
+        .post-content,
+        .post-date {
+          margin: 0;
+        }
+      }
+    }
+
+    .product-collection-link {
+      margin-top: 1em;
+    }
+  }
+}
+
+// overrides for the sections the other agency built
+.podcasts-page-wrapper {
+  .hero-section {
+    height: auto !important;
+
+    @media (min-width: $tablet) {
+      // min-height: calc(100vh - 119px);
+      min-height: none !important;
+      max-height: none !important;
+    }
+
+    @media (min-width: $desktop) {
+      min-height: calc(100vh - 119px) !important;
+    }
+  }
+}

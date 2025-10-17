@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WSBB Pages</title>
+  </head>
+  <body>
+    <!-- Container where WSBB page will be injected -->
+    <div id="wsbb-content"></div>
+    <script>
+      async function loadWSBBPage(pageName) {
+        try {
+          // Fetch the embeddable version
+          const response = await fetch(
+            `https://wsbb-pages.netlify.app/pages/${pageName}.embed.html`
+          )
+
+          if (!response.ok) {
+            throw new Error(`Failed to load: ${response.status}`)
+          }
+
+          const html = await response.text()
+
+          // Inject into your page
+          const container = document.getElementById('wsbb-content')
+          container.innerHTML = html
+
+          // Re-execute scripts (required for Vue to initialize)
+          const scripts = container.querySelectorAll('script')
+          scripts.forEach(oldScript => {
+            const newScript = document.createElement('script')
+            Array.from(oldScript.attributes).forEach(attr => {
+              newScript.setAttribute(attr.name, attr.value)
+            })
+            newScript.textContent = oldScript.textContent
+            oldScript.parentNode.replaceChild(newScript, oldScript)
+          })
+
+          console.log(`✅ Loaded ${pageName} page successfully`)
+        } catch (error) {
+          console.error('Error loading WSBB page:', error)
+        }
+      }
+
+      // Load the about page
+      loadWSBBPage('about')
+    </script>
+  </body>
+</html>

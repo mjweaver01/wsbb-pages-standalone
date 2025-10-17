@@ -1,0 +1,337 @@
+@use './variables.scss' as *;
+
+.product-list-wrapper {
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+  @media (min-width: $tablet) {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+
+  &.siema-product-list-wrapper {
+    overflow: hidden;
+
+    .dots {
+      max-width: calc(100% - 2em);
+      margin: -1em auto 1em;
+
+      @media (min-width: 400px) {
+        display: none;
+      }
+    }
+  }
+
+  .siema-product-list {
+    .siema-product {
+      margin: 1em 1em 1em;
+    }
+
+    @media (min-width: 400px) {
+      padding-left: calc(16.5% - 0.5em);
+
+      .siema-product {
+        margin: 1em 0.99em 2em !important;
+      }
+    }
+
+    // NOTE will need to change these breakpoints if they change in siema
+    @media (min-width: 675px) {
+      padding-left: calc(26.5% - 0.5em);
+    }
+
+    @media (min-width: $tablet + 1) {
+      padding-left: calc(17.5% - 0.5em);
+    }
+
+    @media (min-width: $desktop + 1) {
+      padding-left: calc(10.5% - 0.5em);
+    }
+
+    @media (min-width: $max-width) {
+      padding-left: calc(13.85% - 1em);
+    }
+  }
+
+  &.product-recommendations {
+    padding-bottom: 0;
+
+    .siema-product {
+      margin: 1em 1.5em 1em;
+    }
+  }
+
+  .product {
+    padding-bottom: 1em !important;
+
+    &.siema-product {
+      padding: 0 !important;
+
+      .product-image-wrapper {
+        overflow: hidden;
+      }
+
+      .product-info {
+        word-break: break-word;
+
+        a {
+          margin-right: 0.5em;
+        }
+      }
+    }
+
+    @media (min-width: $tablet) {
+      padding-bottom: 0 !important;
+    }
+
+    .product-image-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      background: $white;
+
+      &,
+      .image-wrap,
+      .product-image {
+        width: 100%;
+      }
+
+      .product-image {
+        height: auto;
+      }
+    }
+
+    .product-info {
+      * {
+        margin-bottom: 0.5rem;
+
+        &.price,
+        &.original-price {
+          display: inline-block;
+          font-family: $font-family;
+        }
+
+        &.price {
+          color: $gray;
+        }
+
+        &.original-price {
+          color: $dark-gray;
+          position: relative;
+          margin-right: 0.25em;
+
+          &:after {
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 50%;
+            right: 0;
+            border-top: 1px solid;
+            border-color: inherit;
+          }
+        }
+
+        &.original-price + .price {
+          color: $red;
+        }
+      }
+
+      a * {
+        color: initial;
+      }
+    }
+  }
+}
+
+// "featured" collection slider
+.featured-collection {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 2em;
+  padding-bottom: 2em;
+
+  @media (min-width: $tablet) {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 3em;
+    padding-bottom: 3em;
+  }
+
+  .title {
+    text-align: center;
+    margin: 0 1em 1em;
+    color: $primary-color;
+  }
+
+  .product-image {
+    display: block;
+    margin-bottom: 0 !important;
+  }
+
+  .product-list {
+    display: flex;
+
+    &.siema-loaded {
+      display: block;
+      //fix bug with safari
+      //https://stackoverflow.com/questions/47180154/why-does-safari-treats-transform-translate-different-when-compared-to-chrome
+      -webkit-transform: translateZ(0);
+    }
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $light-neutral;
+    padding: 1em;
+
+    * {
+      margin-bottom: 0 !important;
+    }
+
+    .price {
+      color: $primary-color !important;
+      white-space: nowrap;
+      margin-left: 0.5em;
+      margin-top: 0 !important;
+    }
+  }
+}
+
+// link below for product list collection page
+.product-list-collection-link {
+  margin-top: 2em;
+}
+
+// shortcode product
+.shortcode-product {
+  padding: 1em;
+  margin-bottom: 2em;
+
+  @media (min-width: $tablet) {
+    padding: 1.5em 1.5em 0.5em;
+    gap: 1em;
+  }
+
+  .product-image-wrapper {
+    position: relative;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .title-wrapper {
+    margin-bottom: 0.5em;
+  }
+
+  .description {
+    margin-bottom: 1em;
+    display: none;
+
+    @media (min-width: $tablet) {
+      display: block;
+    }
+  }
+
+  .product-view-link {
+    color: $black;
+    text-decoration: underline;
+
+    @media (min-width: $tablet) {
+      &.mobile-view-link {
+        display: none;
+      }
+    }
+  }
+
+  .product-info-desktop {
+    .options-wrapper,
+    .inline-atc-wrapper {
+      display: none;
+
+      @media (min-width: $tablet) {
+        display: grid;
+      }
+    }
+
+    .product-view-link {
+      text-align: center;
+    }
+  }
+
+  .product-info-mobile {
+    width: 100%;
+
+    .title-wrapper,
+    .price-wrapper,
+    .product-view-link {
+      display: none;
+    }
+
+    .inline-atc-wrapper {
+      display: block;
+    }
+
+    .options-wrapper {
+      @media (min-width: calc($mobile - 100px)) and (max-width: $desktop) {
+        .swatches-wrapper {
+          flex-basis: 50%;
+        }
+      }
+    }
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+}
+
+.inline-rhpa {
+  @media (min-width: $tablet) {
+    padding: 1em;
+  }
+
+  .title-wrapper * {
+    text-decoration: none;
+    color: $black;
+  }
+
+  .price-wrapper {
+    * {
+      font-family: $tertiary-font;
+      font-weight: bold;
+      color: $gray;
+    }
+  }
+
+  .swatches {
+    margin-bottom: 0 !important;
+
+    @media (min-width: $tablet) {
+      margin-bottom: 0.5em !important;
+    }
+  }
+
+  .swatch-size-link-wrapper {
+    display: flex !important;
+  }
+
+  button span {
+    line-height: 1;
+  }
+
+  button,
+  a {
+    width: 100%;
+  }
+
+  .inline-atc-wrapper {
+    display: grid;
+    grid-template-columns: auto 35%;
+    align-items: center;
+    grid-gap: 2em;
+  }
+}

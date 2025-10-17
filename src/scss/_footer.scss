@@ -1,0 +1,193 @@
+//------------------
+// SCSS VARS
+//------------------
+@use './variables.scss' as *;
+
+//------------------
+// SOCIAL ICON
+//------------------
+@use './social.scss';
+
+//------------------
+// EMAIL SIGNUP
+//------------------
+@use './footer-email-signup.scss';
+
+//------------------
+// FOOTER
+//------------------
+footer {
+  background: $secondary-color;
+
+  a,
+  a * {
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+      color: $dark-gray;
+    }
+  }
+
+  p {
+    color: $white;
+  }
+
+  .footer-top-wrapper {
+    padding: 3em 0 0;
+
+    .footer-inner {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+
+      @media (min-width: $desktop) {
+        flex-flow: row;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .footer-main-link {
+        color: $light-blue;
+      }
+
+      .footer-left {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+        order: 0;
+        margin-bottom: 2em;
+
+        @media (min-width: $tablet) {
+          flex-flow: row;
+          flex-basis: 25%;
+          flex-wrap: nowrap;
+          margin: 0 -0.5em 2em;
+        }
+
+        @media (min-width: $desktop) {
+          flex-basis: 50%;
+          margin: -0.2em 0 0;
+          width: auto;
+        }
+
+        div {
+          padding: 0 0.5em;
+          flex-basis: 50%;
+          margin-bottom: 2em;
+
+          &:last-of-type {
+            margin-bottom: 0;
+          }
+
+          @media (min-width: $desktop) {
+            margin-bottom: 0em;
+            flex-basis: 25%;
+
+            &:first-of-type {
+              padding-left: 0;
+            }
+          }
+
+          p {
+            font-size: 0.9em;
+            margin-bottom: 0.5em;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      .footer-center {
+        text-align: center;
+        flex-shrink: 0;
+        order: -1;
+
+        @media (min-width: $desktop) {
+          text-align: left;
+          margin-right: 1em;
+          order: 0;
+        }
+
+        .footer-logo-wrapper {
+          text-decoration: none;
+          color: $black;
+          margin-bottom: 2em;
+
+          .footer-logo {
+            max-width: 8em;
+
+            img {
+              display: block;
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      .footer-right {
+        @media (min-width: $desktop) {
+          flex-basis: 50%;
+        }
+      }
+
+      .footer-social {
+        display: flex;
+        justify-content: center;
+
+        @media (min-width: $desktop) {
+          justify-content: start;
+        }
+
+        a {
+          margin-top: 1em;
+          filter: $gray-filter;
+
+          &:hover {
+            filter: $light-blue-filter;
+          }
+
+          @media (min-width: $tablet) {
+            margin-top: 0;
+          }
+
+          &:not(:first-of-type) {
+            margin-left: 0.5em;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    padding: 1em 1em 2em;
+
+    @media (min-width: $tablet) {
+      flex-flow: row;
+      align-items: center;
+    }
+
+    .footer-copyright {
+      width: 100%;
+      text-align: center;
+
+      p {
+        font-size: 0.9em;
+        margin-bottom: 0;
+        color: $dark-gray;
+      }
+
+      a {
+        font-size: 0.8em;
+        color: $dark-gray;
+        margin: 0.75em 0;
+      }
+    }
+  }
+}

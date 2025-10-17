@@ -1,0 +1,89 @@
+@use './variables.scss' as *;
+
+.email-signup {
+  background: $dark-blue-2;
+
+  &-inner {
+    max-width: 413px;
+    margin: 0 auto;
+    padding: 3em 1em;
+
+    @media (min-width: $tablet) {
+      max-width: $desktop;
+    }
+
+    div[class*='row'] {
+      min-height: 240px; //thanks shawn
+    }
+
+    .email-signup-header {
+      color: $white;
+    }
+
+    .email-signup-description {
+      margin-bottom: 0;
+      color: $light-blue;
+
+      span {
+        color: $white;
+      }
+    }
+  }
+
+  .klaviyo-wrapper {
+    $klaviyo-max-width: 375px !important;
+    width: 100%;
+    order: 0;
+
+    @media (min-width: $desktop) {
+      width: auto;
+      margin-left: 1em;
+      margin-bottom: -0.5em;
+    }
+
+    form {
+      padding: 0;
+      max-width: $klaviyo-max-width;
+      margin-left: 0;
+      margin-top: 1em;
+
+      @media (min-width: $tablet) {
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      > div {
+        width: 100%;
+      }
+    }
+
+    label {
+      padding-bottom: 0 !important;
+    }
+
+    button {
+      background: $primary-color !important;
+    }
+
+    * {
+      font-family: inherit !important;
+    }
+
+    ::-webkit-input-placeholder {
+      font-family: inherit !important;
+    }
+
+    ::-moz-placeholder {
+      font-family: inherit !important;
+    }
+
+    :-ms-input-placeholder {
+      font-family: inherit !important;
+    }
+
+    :-moz-placeholder {
+      font-family: inherit !important;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@use './variables.scss' as *;
+
+@keyframes blowUp {
+  0% {
+    transform: scale(1) translateZ(0);
+  }
+
+  50% {
+    transform: scale(1.15) translateZ(0);
+  }
+
+  100% {
+    transform: scale(1) translateZ(0);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0) translateZ(0);
+  }
+
+  100% {
+    transform: scale(1) translateZ(0);
+  }
+}
+
+//------------------
+// CART ICON (IN HEADER)
+//------------------
+.cart {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1rem;
+  cursor: pointer;
+  z-index: 3;
+  text-decoration: none;
+
+  @media (min-width: $desktop) {
+    padding: 2.1rem 1rem 2.1rem 0.5rem !important;
+  }
+
+  .cart-icon {
+    position: relative;
+    width: 1.1rem;
+    height: 1.1rem;
+    background: url('../assets/cart-icon.svg') no-repeat;
+    background-position: center;
+    background-size: contain;
+    pointer-events: none;
+    transition: filter 0.25s;
+
+    &.cart-filled {
+      transition: all 0.25s;
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: $red;
+        border-radius: 50%;
+        bottom: -4px;
+        right: -2px;
+        transition: all 0.25s;
+        animation-duration: 0.3s;
+        animation-name: scaleUp;
+        animation-direction: alternate;
+        backface-visibility: hidden;
+      }
+
+      &.cart-change {
+        transition: all 0.25s;
+        animation-duration: 0.3s;
+        animation-name: blowUp;
+        animation-direction: alternate;
+      }
+    }
+  }
+
+  &.active {
+    .cart-icon {
+      filter: $secondary-gray-filter;
+    }
+  }
+}

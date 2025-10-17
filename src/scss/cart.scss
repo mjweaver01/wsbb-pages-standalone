@@ -1,0 +1,51 @@
+//------------------
+// SCSS VARS
+//------------------
+@use './variables.scss' as *;
+
+//------------------
+// CART PAGE
+//------------------
+.cart-page {
+  min-height: 500px;
+  padding: 2em 1em;
+
+  h1 {
+    display: none;
+  }
+
+  @media (min-width: $tablet) {
+    h1 {
+      display: block;
+    }
+
+    .top-back-to-shopping {
+      display: none;
+    }
+  }
+
+  .top-cart-button {
+    display: block;
+
+    @media (min-width: $tablet) {
+      display: none;
+    }
+  }
+
+  @media (min-width: $desktop) {
+    padding: 4em 1em;
+  }
+
+  .cart-details {
+    display: flex;
+    flex-flow: column;
+
+    @media (min-width: $tablet) {
+      flex-flow: row;
+    }
+
+    .back-to-shopping {
+      margin-bottom: 1em;
+    }
+  }
+}

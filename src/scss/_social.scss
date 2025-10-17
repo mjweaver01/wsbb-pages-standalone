@@ -1,0 +1,43 @@
+@use './variables.scss' as *;
+
+.social {
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: filter 0.1s;
+
+  &:hover {
+    filter: $gray-filter;
+  }
+
+  &-facebook {
+    background-image: url('../assets/social/facebook.png');
+  }
+
+  &-instagram {
+    background-image: url('../assets/social/instagram.png');
+  }
+
+  &-twitter {
+    background-image: url('../assets/social/twitter.png');
+  }
+
+  &-pinterest {
+    background-image: url('../assets/social/pinterest.png');
+  }
+
+  &-youtube {
+    background-image: url('../assets/social/youtube.png');
+  }
+
+  &-snapchat {
+    background-image: url('../assets/social/snapchat.png');
+  }
+
+  &-email {
+    background-image: url('../assets/social/email.png');
+  }
+}

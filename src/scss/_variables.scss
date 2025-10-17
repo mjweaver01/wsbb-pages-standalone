@@ -1,0 +1,68 @@
+//------------------
+// FONT
+//------------------
+$primary-font: 'Knockout Cruiser', Helvetica, sans-serif;
+$secondary-font: 'Knockout Junior', Helvetica, sans-serif;
+$tertiary-font: 'Knockout Ult Sumo', Helvetica, sans-serif;
+$quaternary-font: 'Knockout Sumo', Helvetica, sans-serif;
+$font-family: $primary-font, Helvetica, sans-serif;
+
+//------------------
+// BREAKPOINTS
+//------------------
+$mobile: 550px;
+$tablet: 768px;
+$desktop: 1024px;
+$max-width: 1280px;
+
+//------------------
+// COLORS
+//------------------
+$white: #ffffff;
+$black: #212121;
+$dark-gray: #949494;
+$gray: #8a94a1;
+$medium-gray: #c1c1c1;
+$light-gray: #e5e6e6;
+$lighter-gray: #cdcdcd;
+$light-neutral: #f0efee;
+$dark-neutral: #212121;
+$red: #e85555;
+$dark-navy: #1d2024;
+$dark-blue-2: #282b30;
+$olive: #7b6f5a;
+$blue-core: #306cf4;
+$light-blue: #2a95fa;
+
+$overlay: rgba($black, 0.4);
+
+//------------------
+// THEME COLORS
+//------------------
+$primary-color: $blue-core;
+$primary-color-transparent: rgba($primary-color, 0.2);
+$secondary-color: $dark-navy;
+
+//------------------
+// SHADOWS
+//------------------
+$shadow: 0px 20px 40px rgba($black, 0.08);
+$header-shadow: 0 0 10px rgba($black, 0.1);
+$card-shadow:
+  2px 5px 8px rgba($black, 0.2),
+  0px 0px 1px rgba($black, 0.1);
+
+//------------------
+// IMAGE FILTER COLORS
+// https://codepen.io/sosuke/pen/Pjoqqp
+//------------------
+$white-filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(150%);
+$black-filter: brightness(0) saturate(100%);
+$gray-filter: $black-filter invert(76%) sepia(5%) saturate(45%) hue-rotate(201deg) brightness(94%)
+  contrast(93%);
+$secondary-gray-filter: brightness(137%) contrast(122%) invert(20%) sepia(12%) saturate(26%)
+  hue-rotate(56deg) brightness(116%) contrast(97%);
+$blue-filter: invert(35%) sepia(69%) saturate(3386%) hue-rotate(213deg) brightness(97%)
+  contrast(97%);
+$light-blue-filter: invert(45%) sepia(42%) saturate(1771%) hue-rotate(185deg) brightness(102%)
+  contrast(96%);

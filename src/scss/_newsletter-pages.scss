@@ -1,0 +1,232 @@
+@use './variables.scss' as *;
+
+$old-mobile: $mobile;
+$mobile: 420px;
+
+.newsletter-signup-background {
+  background: $dark-gray;
+}
+
+.newsletter-logo-link {
+  filter: $white-filter;
+  text-align: center;
+  padding: 1em 1.25em;
+
+  img {
+    display: block;
+    max-width: 12em;
+    max-height: 2.25em;
+    height: 100%;
+    margin: 0 auto;
+  }
+}
+
+$logo-link-height: 68px;
+
+// Sign Up & Shared Success Styles
+.newsletter-signup-outer,
+.newsletter-success-outer {
+  padding: 1.25em 1.25em 2.5em;
+  min-height: calc(100vh - #{$logo-link-height * 2});
+  display: flex;
+  align-items: center;
+
+  @media (min-width: $mobile) {
+    padding: 2.5em;
+  }
+
+  .newsletter-signup-inner,
+  .newsletter-success-inner {
+    position: relative;
+    display: grid;
+    align-items: center;
+    margin: 0 auto;
+    background: $blue-core;
+    max-width: $old-mobile - 115;
+
+    &.newsletter-success-inner {
+      max-width: $old-mobile;
+    }
+
+    @media (min-width: $tablet) {
+      grid-template-columns: 1fr 1fr;
+
+      &,
+      &.newsletter-success-inner {
+        max-width: $max-width - 80;
+      }
+    }
+
+    @media (min-width: $desktop) {
+      grid-template-columns: 1fr 0.75fr;
+    }
+
+    * {
+      color: $white;
+    }
+
+    .newsletter-signup-left,
+    .newsletter-signup-right {
+      @media (min-width: $tablet) {
+        position: relative;
+      }
+
+      &-inner {
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    .newsletter-signup-left {
+      padding: 1.25em 1.25em 0;
+
+      @media (min-width: $mobile) {
+        padding: 2.5em 2.5em 0;
+      }
+
+      @media (min-width: $tablet) {
+        padding: 2.5em;
+      }
+
+      @media (min-width: $desktop) {
+        padding: 5em 2.5em;
+      }
+
+      @media (min-width: $max-width) {
+        padding: 7em 2.5em;
+      }
+
+      .hero {
+        margin: 0;
+        font-size: 26px;
+        line-height: 1.2;
+
+        @media (min-width: $tablet) and (max-width: calc($desktop - 1px)) {
+          font-size: 3.5em;
+        }
+
+        @media (min-width: $desktop) {
+          font-size: 60px;
+        }
+      }
+
+      .nitro {
+        margin-top: 10px;
+      }
+    }
+
+    .newsletter-signup-right {
+      padding: 0.75em 1.25em 1.25em;
+
+      @media (min-width: $mobile) {
+        padding: 0.75em 2.5em 2.5em;
+      }
+
+      @media (min-width: $desktop) {
+        padding: 5em;
+      }
+
+      .newsletter-signup-right-description {
+        margin-bottom: -0.75em !important;
+      }
+
+      .klaviyo-wrapper {
+        width: auto;
+        min-height: 280px;
+
+        form {
+          padding: 0 !important;
+          margin: 0 !important;
+          max-width: none !important;
+
+          > div {
+            width: 100%;
+          }
+        }
+
+        div {
+          background: transparent !important;
+        }
+
+        label {
+          padding-bottom: 0 !important;
+        }
+
+        * {
+          font-family: inherit !important;
+        }
+
+        ::-webkit-input-placeholder {
+          font-family: inherit !important;
+        }
+
+        ::-moz-placeholder {
+          font-family: inherit !important;
+        }
+
+        :-ms-input-placeholder {
+          font-family: inherit !important;
+        }
+
+        :-moz-placeholder {
+          font-family: inherit !important;
+        }
+      }
+
+      .nitro {
+        display: block;
+        margin: 10px auto 0;
+      }
+    }
+  }
+}
+
+// Success
+.newsletter-success-outer {
+  min-height: unset;
+
+  @media (min-width: $desktop) {
+    padding: 5em;
+  }
+
+  @media (min-width: $max-width) {
+    padding: 7.5em;
+  }
+
+  .newsletter-success-inner {
+    display: block !important;
+    text-align: center;
+    padding: 1.25em;
+
+    @media (min-width: $mobile) {
+      padding: 2.5em;
+    }
+
+    @media (min-width: $desktop) {
+      padding: 3.75em;
+    }
+
+    .newsletter-success-description br {
+      @media (max-width: calc($tablet - 1px)) {
+        display: none;
+      }
+    }
+
+    .nitro {
+      display: block;
+      margin: 0 auto;
+
+      @media (min-width: $tablet) {
+        margin: 0 auto 1.25em;
+      }
+    }
+  }
+}
+
+.newsletter-success-bottom {
+  background: $light-neutral;
+
+  @media (min-width: $desktop) {
+    padding: 2.5em;
+  }
+}
